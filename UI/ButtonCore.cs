@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using CalcLib.CalcVariants;
+using CalcLib.Engine;
 using CalcLib.Types;
 
 namespace CalcLib.UI
 {
     public class ButtonCore
     {
-        private int _offSetTop = 0;
-        private int _offSetLeft = 0;
+        private int _offSetTop;
+        private int _offSetLeft;
 
         public const int Width = 40;
         private const int Height = 40;
@@ -37,7 +39,7 @@ namespace CalcLib.UI
             }
         }
 
-        private void AddButton(Window that, Grid mainGrid, int x, int y, IItem item)
+        private void AddButton(Window that, Grid mainGrid, int x, int y, ItemBase item)
         {
             if (that == null) throw new ArgumentNullException(nameof(that));
             if (mainGrid == null) throw new ArgumentNullException(nameof(mainGrid));
@@ -49,26 +51,31 @@ namespace CalcLib.UI
             that.RegisterName(button.Name, button);
             mainGrid.Children.Add(button);
 
-            if (item is FunctionItem itemF)
-            {
-                button.Click += getClick(itemF);
-            }
-
-
             button.Margin = new Thickness
             {
                 Top = y * Height + _offSetTop,
                 Left = x * Width + _offSetLeft
             };
+            button.CommandParameter = item;
+
+            if (item is ItemBase itemF)
+            {
+                button.CommandParameter = itemF;
+                button.Click += ButtonOnClick;
+            }
         }
 
-        private RoutedEventHandler getClick(FunctionItem item)
+        private void ButtonOnClick(object sender, RoutedEventArgs e)
         {
-            return (sender, args) =>
+            var button = (Button)sender;
+            var item = button.CommandParameter as ItemBase;
+
+            if (item.CalcType == CalcType.Value)
             {
-                var uiElements = UiElements.Instance;
-                uiElements.TextBox.Text = item.Name;
-            };
+                Elements.SetText(item.Value.ToString(CultureInfo.InvariantCulture));
+            }
+            Values.Add(item);
+            
         }
     }
 }

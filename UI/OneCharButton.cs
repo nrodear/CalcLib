@@ -8,8 +8,7 @@ namespace CalcLib.UI
     internal class OneCharButton
     {
         private readonly Button _myControl = new Button();
-
-
+        
         private OneCharButton(string name, string symbol, int width, int height)
         {
             if (symbol.Length > 1)

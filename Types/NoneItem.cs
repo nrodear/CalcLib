@@ -1,17 +1,13 @@
 ﻿
 namespace CalcLib.Types
 {
-    internal class NoneItem : IItem
+    internal class NoneItem : ItemBase
     {
-        public string Name { get; }
-        public CalcType CalcType { get; }
-        public string Value { get; }
-
         private NoneItem()
         {
             CalcType = CalcType.None;
             Name = "?";
-            Value = "?";
+            Value = -1;
         }
 
         public static NoneItem CreateItem()
