@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Controls;
-using CalcLib.Types;
 
 namespace CalcLib.Engine
 {
     public sealed class Elements
     {
-        private static readonly Elements instance = new Elements();
+        private static readonly Elements _instance = new ();
 
         private TextBox TextBox { get; set; }
 
@@ -20,29 +17,38 @@ namespace CalcLib.Engine
 
         private Elements()
         {
+            Values.Instance.ValueChanged += UpdateText;
         }
 
-        public static Elements Instance => instance;
+        public static Elements Instance => _instance;
 
         public static void Clear()
         {
-            if (instance.TextBox != null)
+            SetText("");
+        }
+
+        public static void UpdateText()
+        {
+            if (Values.TryGetValue(out float value))
             {
-                instance.TextBox.Text = "";
-            };
+                SetText(value.ToString(CultureInfo.InvariantCulture));
+                return;
+            }
+
+            Clear();
         }
 
         public static void SetText(string text)
         {
-            if (instance.TextBox != null)
+            if (_instance.TextBox != null)
             {
-                instance.TextBox.Text = text;
+                _instance.TextBox.Text = text;
             }
         }
 
         public static void SetTextBox(TextBox textBox)
         {
-            instance.TextBox = textBox;
+            _instance.TextBox = textBox;
         }
     }
 }

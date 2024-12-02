@@ -20,30 +20,14 @@ namespace CalcLib.UI
                 VerticalAlignment = VerticalAlignment.Top,
                 Margin = new Thickness()
                 {
-                    Top = top, // 300
-                    Left = left,     // 200
+                    Top = top,      // 300
+                    Left = left,    // 200
                 },
-                Width = width,        // 200
+                Width = width,      // 200
                 Background = new SolidColorBrush(Color.FromRgb(244, 255, 237))
             };
             
             return _textbox;
-        }
-
-        public TextBox GetUIElement()
-        {
-            return _textbox;
-        }
-
-        public void  RemoveTextBox()
-        {
-            _textbox.Clear();
-        }
-
-
-        public void AddTextBox(string text)
-        {
-            _textbox.Text = text;
         }
 
     }

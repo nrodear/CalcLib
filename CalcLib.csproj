@@ -119,9 +119,12 @@
     <Compile Include="CalcVariants\ButtonValues.cs" />
     <Compile Include="EngineTests\MethodsTests.cs" />
     <Compile Include="EngineTests\ValuesTests.cs" />
-    <Compile Include="Engine\ArgsType.cs" />
+    <Compile Include="Engine\Item.cs" />
+    <Compile Include="Engine\ItemMethod.cs" />
+    <Compile Include="Engine\ItemValue.cs" />
     <Compile Include="Engine\Methods.cs" />
     <Compile Include="Engine\Elements.cs" />
+    <Compile Include="Engine\NoneItem.cs" />
     <Compile Include="Engine\Values.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -129,10 +132,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Types\ArgsType.cs" />
+    <Compile Include="Types\ArgsTypeAttribute.cs" />
     <Compile Include="Types\CalcType.cs" />
-    <Compile Include="Types\Item.cs" />
-    <Compile Include="Types\ItemBase.cs" />
-    <Compile Include="Types\NoneItem.cs" />
+    <Compile Include="Types\CalcTypeAttribute.cs" />
+    <Compile Include="Types\LevelType.cs" />
+    <Compile Include="Types\LevelTypeAttribute.cs" />
     <Compile Include="UI\ButtonCore.cs" />
     <Compile Include="UI\OneCharButton.cs" />
     <Compile Include="UI\TextBoxes.cs" />
@@ -151,6 +156,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

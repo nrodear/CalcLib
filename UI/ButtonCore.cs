@@ -39,7 +39,7 @@ namespace CalcLib.UI
             }
         }
 
-        private void AddButton(Window that, Grid mainGrid, int x, int y, ItemBase item)
+        private void AddButton(Window that, Grid mainGrid, int x, int y, Item item)
         {
             if (that == null) throw new ArgumentNullException(nameof(that));
             if (mainGrid == null) throw new ArgumentNullException(nameof(mainGrid));
@@ -58,7 +58,7 @@ namespace CalcLib.UI
             };
             button.CommandParameter = item;
 
-            if (item is ItemBase itemF)
+            if (item is Item itemF)
             {
                 button.CommandParameter = itemF;
                 button.Click += ButtonOnClick;
@@ -68,12 +68,7 @@ namespace CalcLib.UI
         private void ButtonOnClick(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
-            var item = button.CommandParameter as ItemBase;
-
-            if (item.CalcType == CalcType.Value)
-            {
-                Elements.SetText(item.Value.ToString(CultureInfo.InvariantCulture));
-            }
+            var item = button.CommandParameter as Item;
             Values.Add(item);
             
         }

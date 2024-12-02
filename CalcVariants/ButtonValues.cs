@@ -6,39 +6,40 @@ namespace CalcLib.CalcVariants
 {
     public class ButtonDefaultValues
     {
-        private readonly ItemBase[,] _buttonItems = new ItemBase[,] { };
+        private readonly Item[,] _buttonItems = new Item[,] { };
 
         public ButtonDefaultValues()
         {
 
-            ItemBase _nnnn = NoneItem.CreateItem();
+            Item _nnnn = NoneItem.CreateItem();
 
-            ItemBase Clear = Item.CreateItem("C", Methods.Clear(), ArgsType.None);
-            ItemBase Calc = Item.CreateItem("=", Methods.Result(), ArgsType.None);
+            Item Clear = Item.CreateItem("C", Methods.Clear());
+
+            Item Calc = Item.CreateItem("=", Methods.Result());
             
-            ItemBase perc = Item.CreateItem("%", Methods.Percent(), ArgsType.Two);
-            ItemBase Inv = Item.CreateItem(((char)177).ToString(),Methods.Invert(),ArgsType.One);
+            Item perc = Item.CreateItem("%", Methods.Percent());
+            Item Inv = Item.CreateItem(((char)177).ToString(),Methods.Invert());
             
-            ItemBase Add = Item.CreateItem("+", Methods.Add(), ArgsType.Two);
-            ItemBase Div = Item.CreateItem("/", Methods.Division(),ArgsType.Two);
-            ItemBase Minus = Item.CreateItem("-", Methods.Minus(), ArgsType.Two);
-            ItemBase Multi = Item.CreateItem("*", Methods.Multiply(), ArgsType.Two);
+            Item Add = Item.CreateItem("+", Methods.Add());
+            Item Div = Item.CreateItem("/", Methods.Division());
+            Item Minus = Item.CreateItem("-", Methods.Minus());
+            Item Multi = Item.CreateItem("*", Methods.Multiply());
 
-            ItemBase Comma = Item.CreateItem(",");
+            Item Comma = Item.CreateItem(",");
 
-            ItemBase Num0 = Item.CreateItem("0", 0);
-            ItemBase Num1 = Item.CreateItem("1", 1);
-            ItemBase Num2 = Item.CreateItem("2", 2);
-            ItemBase Num3 = Item.CreateItem("3", 3);
-            ItemBase Num4 = Item.CreateItem("4", 4);
-            ItemBase Num5 = Item.CreateItem("5", 5);
-            ItemBase Num6 = Item.CreateItem("6", 6);
-            ItemBase Num7 = Item.CreateItem("7", 7);
-            ItemBase Num8 = Item.CreateItem("8", 8);
-            ItemBase Num9 = Item.CreateItem("9", 9);
+            Item Num0 = Item.CreateItem("0", 0);
+            Item Num1 = Item.CreateItem("1", 1);
+            Item Num2 = Item.CreateItem("2", 2);
+            Item Num3 = Item.CreateItem("3", 3);
+            Item Num4 = Item.CreateItem("4", 4);
+            Item Num5 = Item.CreateItem("5", 5);
+            Item Num6 = Item.CreateItem("6", 6);
+            Item Num7 = Item.CreateItem("7", 7);
+            Item Num8 = Item.CreateItem("8", 8);
+            Item Num9 = Item.CreateItem("9", 9);
 
 
-            _buttonItems = new ItemBase[,]
+            _buttonItems = new Item[,]
             {
                 { perc, _nnnn, Clear, _nnnn },
                 { _nnnn, _nnnn, _nnnn, Div },
@@ -59,9 +60,9 @@ namespace CalcLib.CalcVariants
 
         public int GetX { get; }
 
-        internal ItemBase GetItem(int y, int x)
+        internal Item GetItem(int y, int x)
         {
-            return (ItemBase)_buttonItems.GetValue(y, x);
+            return (Item)_buttonItems.GetValue(y, x);
         }
     }
 }
