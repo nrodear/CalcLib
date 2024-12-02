@@ -1,5 +1,4 @@
-﻿#nullable enable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -50,6 +49,11 @@ namespace CalcLib.Engine
 
             if (item.GetType() == typeof(ItemMethod))
             {
+                if (_instance._stack.Count == 0)
+                {
+                    return;
+                }
+
                 var method = (ItemMethod)item;
                 if (method.LevelType == LevelType.None)
                 {
@@ -77,6 +81,7 @@ namespace CalcLib.Engine
             {
                 return;
             }
+
             var newInstance = item.Copy();
             _instance.lastItem = newInstance;
             _instance._stack.Push(newInstance);
@@ -125,8 +130,8 @@ namespace CalcLib.Engine
             if (_instance._stack.Count >= 4)
             {
                 return ProcessItems();
-
             }
+
             return 0;
         }
 
@@ -213,7 +218,7 @@ namespace CalcLib.Engine
             Push(resultItem);
 
             Push(rememberItemMethod);
-            
+
 
             return result;
         }

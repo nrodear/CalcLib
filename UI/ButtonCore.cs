@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using CalcLib.CalcVariants;
 using CalcLib.Engine;
 using CalcLib.Types;
 
@@ -14,9 +12,8 @@ namespace CalcLib.UI
         private int _offSetLeft;
 
         public const int Width = 40;
-        private const int Height = 40;
-
-
+        public const int Height = 40;
+        
         public static ButtonCore GetInstance(int top, int left)
         {
             var ret = new ButtonCore
@@ -27,7 +24,7 @@ namespace CalcLib.UI
             return ret;
         }
 
-        public void AddDefaultsButtons(Window that, Grid mainGrid, ButtonDefaultValues values)
+        public void AddDefaultsButtons(Window that, Grid mainGrid, IButtonValues values)
         {
             for (var y = 0; y <= values.GetLengthY; y++)
             {
@@ -45,8 +42,8 @@ namespace CalcLib.UI
             if (mainGrid == null) throw new ArgumentNullException(nameof(mainGrid));
             if (item == null) throw new ArgumentNullException(nameof(item));
 
-            var button = OneCharButton.CreateInstance("oneCharButton" + x + y,
-                item.Name, Width, Height);
+            var button = PrettyButton.CreateInstance("PrettyButton" + x + y,
+                item.Name);
 
             that.RegisterName(button.Name, button);
             mainGrid.Children.Add(button);
@@ -70,7 +67,6 @@ namespace CalcLib.UI
             var button = (Button)sender;
             var item = button.CommandParameter as Item;
             Values.Add(item);
-            
         }
     }
 }

@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace CalcLib.UI
 {
-    internal class OneCharButton
+    internal class PrettyButton
     {
         private readonly Button _myControl = new Button();
         
-        private OneCharButton(string name, string symbol, int width, int height)
+        private PrettyButton(string name, string symbol)
         {
-            if (symbol.Length > 1)
+            if (symbol.Length > 2)
             {
                 throw new ArgumentException("symbol");
             }
-
-            var myEncodedString = HttpUtility.HtmlEncode(symbol);
-
-            _myControl.Width = 40;
-            _myControl.Height = 40;
+            
+            _myControl.Width = ButtonCore.Width;
+            _myControl.Height = ButtonCore.Height;
 
             _myControl.Name = name;
             _myControl.Content = symbol;
@@ -28,9 +25,9 @@ namespace CalcLib.UI
             _myControl.HorizontalAlignment = HorizontalAlignment.Left;
         }
 
-        public static Button CreateInstance(string name, string symbol, int width, int height)
+        public static Button CreateInstance(string name, string symbol)
         {
-            return new OneCharButton(name, symbol, width, height)._myControl;
+            return new PrettyButton(name, symbol)._myControl;
         }
     }
 }

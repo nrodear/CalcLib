@@ -35,7 +35,7 @@ namespace CalcLib.Engine
             Name = name;
         }
 
-        internal static Item CreateItem(string name, Method<float> method)
+        public static Item CreateItem(string name, Method<float> method)
         {
             var item = new ItemMethod(name)
             {
@@ -47,7 +47,7 @@ namespace CalcLib.Engine
             return item;
         }
 
-        internal static Item CreateItem(string name, float value)
+        public static Item CreateItem(string name, float value)
         {
             var item = new ItemValue(name, value);
             return item;

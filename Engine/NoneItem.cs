@@ -1,7 +1,7 @@
 ﻿
 namespace CalcLib.Engine
 {
-    internal class NoneItem : Item
+    public class NoneItem : Item
     {
         private NoneItem() : base("?")
         {
