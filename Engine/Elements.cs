@@ -52,11 +52,6 @@ namespace CalcLib.Engine
         {
             _instance.TextBox = textBox;
         }
-
-        public static void RegisterObjects(Window window,string name ,  Object textBox)
-        {
-            window.RegisterName(name, textBox);
-        }
             
     }
 }

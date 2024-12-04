@@ -2,10 +2,7 @@
 # Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
 ################################################################################
 
-\.vs
-\bin
-\obj
-\packages
-
-/bin/Debug/ClassLibrary1.pdb
-/bin/Debug/ClassLibrary1.dll
+/.vs
+/bin
+/obj
+/packages

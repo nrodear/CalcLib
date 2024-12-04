@@ -12,9 +12,11 @@ namespace CalcLib.Engine
 
         public event Action ValueChanged;
 
+        public bool Decimal { private get; set; }
+
         private Item lastItem;
 
-        private readonly Stack<Item> _stack = new Stack<Item>();
+        private readonly Stack<Item> _stack = new ();
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
@@ -97,9 +99,19 @@ namespace CalcLib.Engine
 
         private static float GetParsedValue(ItemValue valueA, ItemValue value)
         {
-            string concatValue = valueA.Value + value.Value.ToString(CultureInfo.InvariantCulture);
-            var parsedValue = float.Parse(concatValue, CultureInfo.InvariantCulture.NumberFormat);
-            return parsedValue;
+            var delimiter = "";
+            if (_instance.Decimal)
+            {
+                delimiter = ",";
+            }
+            _instance.Decimal = false;
+            string concatValue = valueA.Value + delimiter  + value.Value.ToString(CultureInfo.InvariantCulture);
+            if (float.TryParse(concatValue, out float valueOut))
+            {
+                return valueOut;
+            }
+           
+            return valueA.Value;
         }
 
         public static bool TryGetValue(out float value)
@@ -114,7 +126,7 @@ namespace CalcLib.Engine
             }
 
             Clear();
-            value = default(float);
+            value = default;
             return true;
         }
 
