@@ -1,5 +1,7 @@
-﻿using System.Globalization;
-using System.Windows.Controls;
+﻿using System;
+using System.Globalization;
+using System.Windows;
+
 
 namespace CalcLib.Engine
 {
@@ -7,7 +9,7 @@ namespace CalcLib.Engine
     {
         private static readonly Elements _instance = new ();
 
-        private TextBox TextBox { get; set; }
+        public System.Windows.Controls.TextBox TextBox { get; set; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
@@ -46,9 +48,15 @@ namespace CalcLib.Engine
             }
         }
 
-        public static void SetTextBox(TextBox textBox)
+        public static void SetTextBox(System.Windows.Controls.TextBox textBox)
         {
             _instance.TextBox = textBox;
         }
+
+        public static void RegisterObjects(Window window,string name ,  Object textBox)
+        {
+            window.RegisterName(name, textBox);
+        }
+            
     }
 }

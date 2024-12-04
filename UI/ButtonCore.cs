@@ -24,29 +24,26 @@ namespace CalcLib.UI
             return ret;
         }
 
-        public void AddDefaultsButtons(Window that, Grid mainGrid, IButtonValues values)
+        public void AddDefaultsButtons(Window window, Grid mainGrid, IButtonValues values)
         {
             for (var y = 0; y <= values.GetLengthY; y++)
             {
                 for (var x = 0; x <= values.GetLengthX; x++)
                 {
                     var item = values.GetItem(y, x);
-                    AddButton(that, mainGrid, x, y, item);
+                    var button = AddButton( x, y, item);
+
+                    mainGrid.Children.Add(button);
                 }
             }
         }
 
-        private void AddButton(Window that, Grid mainGrid, int x, int y, Item item)
+        private Button AddButton(int x, int y, Item item)
         {
-            if (that == null) throw new ArgumentNullException(nameof(that));
-            if (mainGrid == null) throw new ArgumentNullException(nameof(mainGrid));
             if (item == null) throw new ArgumentNullException(nameof(item));
 
             var button = PrettyButton.CreateInstance("PrettyButton" + x + y,
                 item.Name);
-
-            that.RegisterName(button.Name, button);
-            mainGrid.Children.Add(button);
 
             button.Margin = new Thickness
             {
@@ -60,6 +57,7 @@ namespace CalcLib.UI
                 button.CommandParameter = itemF;
                 button.Click += ButtonOnClick;
             }
+            return button;
         }
 
         private void ButtonOnClick(object sender, RoutedEventArgs e)
