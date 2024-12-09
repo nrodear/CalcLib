@@ -53,11 +53,6 @@ namespace CalcLib.Engine
             return item;
         }
 
-        public static Item CreateItem(string name)
-        {
-            return new Item(name);
-        }
-
         public Item Copy()
         {
             if (GetType() == typeof(ItemValue))

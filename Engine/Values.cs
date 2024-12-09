@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using CalcLib.Types;
 
 namespace CalcLib.Engine
@@ -77,7 +78,7 @@ namespace CalcLib.Engine
             _instance.AutoProcessItems();
         }
 
-        private static void Push(Item? item)
+        private static void Push(Item item)
         {
             if (item == null)
             {
