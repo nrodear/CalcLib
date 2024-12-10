@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 
-
-namespace CalcLib.Engine
+namespace LibCalc.Engine
 {
     public sealed class Elements
     {

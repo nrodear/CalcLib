@@ -1,4 +1,4 @@
-﻿namespace CalcLib.Types
+﻿namespace LibCalc.Types
 {
     /// <summary>
     /// CalcType defines types of buttons from calc

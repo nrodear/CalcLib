@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CalcLib.UI
+namespace LibCalc.UI
 {
     internal class PrettyButton
     {

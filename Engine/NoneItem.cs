@@ -1,5 +1,5 @@
 ﻿
-namespace CalcLib.Engine
+namespace LibCalc.Engine
 {
     public class NoneItem : Item
     {

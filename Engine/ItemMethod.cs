@@ -1,6 +1,6 @@
-﻿using CalcLib.Types;
+﻿using LibCalc.Types;
 
-namespace CalcLib.Engine
+namespace LibCalc.Engine
 {
     public class ItemMethod : Item
     {

@@ -1,6 +1,6 @@
-﻿using CalcLib.Engine;
+﻿using LibCalc.Engine;
 
-namespace CalcLib.Types
+namespace LibCalc.Types
 {
     public interface IButtonValues
     {

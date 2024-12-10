@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using CalcLib.Engine;
-using CalcLib.Types;
+using LibCalc.Engine;
+using LibCalc.Types;
 
-namespace CalcLib.UI
+namespace LibCalc.UI
 {
     public class ButtonCore
     {

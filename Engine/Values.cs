@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Windows;
-using CalcLib.Types;
+using LibCalc.Types;
 
-namespace CalcLib.Engine
+namespace LibCalc.Engine
 {
     public sealed class Values
     {

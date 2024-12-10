@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CalcLib.Types
+namespace LibCalc.Types
 {
     public class ArgsTypeAttribute : Attribute
     {

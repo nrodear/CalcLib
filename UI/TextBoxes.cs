@@ -2,7 +2,7 @@
 using System.Windows.Media;
 using TextBox = System.Windows.Controls.TextBox;
 
-namespace CalcLib.UI
+namespace LibCalc.UI
 {
     public class TextBoxes
     {

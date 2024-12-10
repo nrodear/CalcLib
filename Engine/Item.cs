@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using CalcLib.Types;
+using LibCalc.Types;
 
-namespace CalcLib.Engine
+namespace LibCalc.Engine
 {
     public class Item
     {
